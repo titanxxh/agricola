@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import logger from 'redux-logger';
+import { applyMiddleware } from 'redux';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import { Client } from 'boardgame.io/react';
+import { Agricola } from './game';
+import { UI } from './board/ui';
+import {MainBoard} from "./board/mainBoard";
+
+const AgricolaClient = Client({
+    game: Agricola,
+    board: MainBoard,
+    numPlayers: 4,
+    enhancer: applyMiddleware(logger),
+    //multiplayer: { server: 'localhost:8000' },
+});
+
+// const App = () => (
+//     <div>
+//         <AgricolaClient playerID="0" />
+//     </div>
+// );
+
+const App = () => (
+    <div>
+        <AgricolaClient/>
+    </div>
+);
 
 export default App;
