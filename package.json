@@ -27,6 +27,14 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "keywords": [
+    "react",
+    "redux",
+    "boardgame",
+    "Agricola"
+  ],
+  "author": "titanxxh@gmail.com",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-zero": "^0.2.0"

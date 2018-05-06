@@ -4,12 +4,23 @@ import { PlayerBoard } from './playerBoard';
 import * as cs from '../constants';
 
 export class MainBoard extends React.Component {
-  onClick(index) {
+  onClickMainAction(index) {
     if (this.isOccupied(index)) {
       this.props.moves.clickCell(index);
-      // todo not end turn
-      this.props.events.endTurn();
     }
+  }
+
+  onClickUndoButton() {
+    this.props.undo();
+  }
+
+  onClickRedoButton() {
+    this.props.redo();
+  }
+
+  onClickConfirmButton() {
+    // todo not end turn
+    this.props.events.endTurn();
   }
 
   isOccupied(index) {
@@ -31,7 +42,7 @@ export class MainBoard extends React.Component {
                 ? 'active'
                 : cs.playerColor[this.props.G.actionCells[index].occupied])
             }
-            onClick={() => this.onClick(index)}
+            onClick={() => this.onClickMainAction(index)}
           >
             {`${cs.mainActionTitle[i][j]} ${
               this.props.G.actionCells[index].occupied
@@ -42,9 +53,11 @@ export class MainBoard extends React.Component {
       tbody.push(<tr key={i}>{cells}</tr>);
     }
 
+    const currentPlayerId = this.props.ctx.currentPlayer;
+
     return (
-      <div className={'case ' + cs.playerColor[this.props.ctx.currentPlayer]}>
-        <div>Main Board</div>
+      <div className={'case ' + cs.playerColor[currentPlayerId]}>
+        <div>Main Board, Player {currentPlayerId} Should Move.</div>
         <div>
           <table id="mainBoard">
             <tbody>{tbody}</tbody>
