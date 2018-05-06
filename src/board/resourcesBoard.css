@@ -1,0 +1,20 @@
+table.res {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #555;
+  line-height: 1;
+  border: 3px solid #aaa;
+}
+
+table.res.th {
+  width: 50px;
+  height: 50px;
+  background: #eee;
+}
+
+table.res.td {
+  width: 50px;
+  height: 50px;
+  background: white;
+}

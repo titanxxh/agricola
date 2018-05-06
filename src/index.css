@@ -11,15 +11,38 @@ body {
   border-collapse: collapse;
 }
 
+div.case {
+  /*float: left;*/
+}
+
+div.red {
+  border: 3px solid red;
+}
+
+div.yellow {
+  border: 3px solid yellow;
+}
+
+div.purple {
+  border: 3px solid purple;
+}
+
+div.blue {
+  border: 3px solid blue;
+}
+
 td {
   text-align: center;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   color: #555;
+  line-height: 1;
+  border: 3px solid #aaa;
+}
+
+td.action {
   width: 50px;
   height: 50px;
-  line-height: 50px;
-  border: 3px solid #aaa;
 }
 
 td.red {

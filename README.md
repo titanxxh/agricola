@@ -3,7 +3,7 @@
 
 The final goal of this project is to implement all cards of the new version(deck A,B,C,D).
 
-I also want to learn javascript and frontend programming by building a boardgame project.
+I also want to learn javascript and frontend programming by building this boardgame project.
 
 This project is still working in progress!
 

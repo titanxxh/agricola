@@ -1,42 +1,12 @@
 import { Game } from 'boardgame.io/core';
 import { initPlayer } from './player';
-
-export const maxBoardLength = 9;
-export const maxBoardHeight = 6;
-export const mainActionTitle = [
-  [
-    'Copse',
-    'Farm Expansion',
-    'Round1',
-    'Round2',
-    'Round5',
-    'Round8',
-    'Round10',
-    'Round12',
-    'Round14'
-  ],
-  ['Grove', 'Meeting Place', '', '', '', '', '', '', ''],
-  [
-    'Resource Market',
-    'Grain Seeds',
-    'Forest',
-    'Round3',
-    'Round6',
-    'Round9',
-    'Round11',
-    'Round13',
-    ''
-  ],
-  ['Hollow', 'Farmland', 'Clay Pit', '', '', '', '', '', ''],
-  ['Lessons2', 'Lessons1', 'Reed Bank', 'Round4', 'Round7', '', '', '', ''],
-  ['Traveling Players', 'Day Laborer', 'Fishing', '', '', '', '', '', '']
-];
-export const playerColor = ['red', 'yellow', 'blue', 'purple'];
-export const defaultPlayerNum = 4;
+import * as cs from './constants';
 
 const isValidActionCellId = function(id) {
   return (
-    mainActionTitle[Math.floor(id / maxBoardLength)][id % maxBoardLength] !== ''
+    cs.mainActionTitle[Math.floor(id / cs.maxBoardLength)][
+      id % cs.maxBoardLength
+    ] !== ''
   );
 };
 
@@ -48,12 +18,14 @@ export const Agricola = Game({
   setup: () => {
     let g = {
       actionCells: Array.from(
-        { length: maxBoardLength * maxBoardHeight },
+        { length: cs.maxBoardLength * cs.maxBoardHeight },
         () => ({
           occupied: -1
         })
       ),
-      players: Array.from({ length: defaultPlayerNum }, i => initPlayer(i))
+      playersInfo: Array.from({ length: cs.defaultPlayerNum }, i =>
+        initPlayer(i)
+      )
     };
     return g;
   },
@@ -78,9 +50,9 @@ export const Agricola = Game({
       delete r.secret;
     }
 
-    for (let i = 0; i < defaultPlayerNum; i++) {
-      if (i != playerID) {
-        delete r.players[i].secret;
+    for (let i = 0; i < cs.defaultPlayerNum; i++) {
+      if (i !== playerID) {
+        delete r.playersInfo[i].secret;
       }
     }
 

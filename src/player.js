@@ -1,4 +1,6 @@
-class playerPublic {
+import * as cs from './constants';
+
+export class playerPublic {
   constructor({ farm, resources, improvements, occupations }) {
     this.farm = farm;
     this.resources = resources;
@@ -7,14 +9,14 @@ class playerPublic {
   }
 }
 
-class playerSecret {
+export class playerSecret {
   constructor({ minors, occupations }) {
     this.minors = minors;
     this.occupations = occupations;
   }
 }
 
-class player {
+export class player {
   constructor({ id, playerPublic, playerSecret }) {
     this.id = id;
     this.public = playerPublic;
@@ -28,11 +30,11 @@ export function initPlayer(id) {
     playerPublic: new playerPublic({
       farm: {
         members: 2,
-        workingMembers: {},
+        workingMembers: [],
         totalStables: 4,
-        stables: {},
+        stables: [],
         totalFences: 15,
-        fences: {}
+        fences: []
       },
       resources: {
         food: 0,
@@ -46,12 +48,12 @@ export function initPlayer(id) {
         boar: 0,
         cattle: 0
       },
-      improvements: {},
-      occupations: {}
+      improvements: [],
+      occupations: []
     }),
     playerSecret: new playerSecret({
-      minors: {},
-      occupations: {}
+      minors: [],
+      occupations: []
     })
   });
 }
