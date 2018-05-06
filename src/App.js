@@ -6,14 +6,14 @@ import { applyMiddleware } from 'redux';
 import { Client } from 'boardgame.io/react';
 import { Agricola } from './game';
 import { UI } from './board/ui';
-import {MainBoard} from "./board/mainBoard";
+import { MainBoard } from './board/mainBoard';
 
 const AgricolaClient = Client({
-    game: Agricola,
-    board: MainBoard,
-    numPlayers: 4,
-    enhancer: applyMiddleware(logger),
-    //multiplayer: { server: 'localhost:8000' },
+  game: Agricola,
+  board: MainBoard,
+  numPlayers: 4,
+  enhancer: applyMiddleware(logger)
+  //multiplayer: { server: 'localhost:8000' },
 });
 
 // const App = () => (
@@ -23,9 +23,9 @@ const AgricolaClient = Client({
 // );
 
 const App = () => (
-    <div>
-        <AgricolaClient/>
-    </div>
+  <div>
+    <AgricolaClient />
+  </div>
 );
 
 export default App;
