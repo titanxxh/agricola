@@ -5,7 +5,6 @@ import { applyMiddleware } from 'redux';
 
 import { Client } from 'boardgame.io/react';
 import { Agricola } from './game';
-import { UI } from './board/ui';
 import { MainBoard } from './board/mainBoard';
 
 const AgricolaClient = Client({

@@ -58,7 +58,7 @@ export class PlayerBoard extends React.Component {
     }
 
     return (
-      <div className={'case ' + cs.playerColor[id]}>
+      <div className={cs.playerColor[id]}>
         <div>Player {id} Board</div>
         <div>
           <table id="playerBoard">

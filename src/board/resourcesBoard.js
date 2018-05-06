@@ -10,7 +10,7 @@ export class ResourcesBoard extends React.Component {
     return (
       <div>
         <table id="resourcesBoard" className={'res'}>
-          <tbody>
+          <thead>
             <tr>
               <th>fence</th>
               <th>stable</th>
@@ -26,6 +26,8 @@ export class ResourcesBoard extends React.Component {
               <th>food</th>
               <th>people</th>
             </tr>
+          </thead>
+          <tbody>
             <tr>
               <td>
                 {farm.totalFences - farm.fences.length + '/' + farm.totalFences}

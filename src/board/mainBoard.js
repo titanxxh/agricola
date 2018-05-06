@@ -2,6 +2,7 @@ import React from 'react';
 import * as game from '../game';
 import { PlayerBoard } from './playerBoard';
 import * as cs from '../constants';
+import { ButtonGroup, Button } from 'reactstrap';
 
 export class MainBoard extends React.Component {
   onClickMainAction(index) {
@@ -56,8 +57,15 @@ export class MainBoard extends React.Component {
     const currentPlayerId = this.props.ctx.currentPlayer;
 
     return (
-      <div className={'case ' + cs.playerColor[currentPlayerId]}>
+      <div className={cs.playerColor[currentPlayerId]}>
         <div>Main Board, Player {currentPlayerId} Should Move.</div>
+        <div>
+          <ButtonGroup>
+            <Button onClick={() => this.onClickUndoButton()}>Undo</Button>
+            <Button onClick={() => this.onClickRedoButton()}>Redo</Button>
+            <Button onClick={() => this.onClickConfirmButton()}>Confirm</Button>
+          </ButtonGroup>
+        </div>
         <div>
           <table id="mainBoard">
             <tbody>{tbody}</tbody>
