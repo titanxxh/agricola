@@ -13,15 +13,18 @@ export const isActionCellUnoccupied = function(G, id) {
 export const Agricola = Game({
   setup: () => {
     let g = {
-      actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => ({
-        occupied: -1
-      })),
+      actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => {
+        occupied: -1;
+      }),
       playersInfo: Array.from({ length: cs.defaultPlayerNum }, i => initPlayer(i)),
       progress: {
         round: 0,
         startPos: 0,
         nextStartPos: 0,
         harvest: false
+      },
+      secret: {
+        roundSeq: cs.stageActions
       }
     };
     return g;
