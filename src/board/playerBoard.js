@@ -27,11 +27,6 @@ const indexToType = function(index) {
 };
 
 export class PlayerBoard extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('playerboard' + JSON.stringify(props));
-  }
-
   onClick(id) {
     alert(JSON.stringify(indexToAccor(id)));
   }
@@ -45,11 +40,7 @@ export class PlayerBoard extends React.Component {
       for (let j = 0; j < playerBoardLength; j++) {
         const index = playerBoardLength * i + j;
         cells.push(
-          <td
-            key={index}
-            className={'player ' + indexToType(index)}
-            onClick={() => this.onClick(index)}
-          >
+          <td key={index} className={'player ' + indexToType(index)} onClick={() => this.onClick(index)}>
             {/*{indexToType(index)}*/}
           </td>
         );

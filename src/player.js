@@ -1,5 +1,3 @@
-import * as cs from './constants';
-
 export class playerPublic {
   constructor({ farm, resources, improvements, occupations }) {
     this.farm = farm;
@@ -22,6 +20,10 @@ export class player {
     this.public = playerPublic;
     this.secret = playerSecret;
   }
+
+  hasAvailableMembers() {
+    return this.public.workingMembers.length < this.public.farm.members + this.public.farm.guests;
+  }
 }
 
 export function initPlayer(id) {
@@ -30,6 +32,7 @@ export function initPlayer(id) {
     playerPublic: new playerPublic({
       farm: {
         members: 2,
+        guests: 0,
         workingMembers: [],
         totalStables: 4,
         stables: [],
