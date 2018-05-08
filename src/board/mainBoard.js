@@ -82,10 +82,10 @@ export class MainBoard extends React.Component {
             <tbody>{tbody}</tbody>
           </table>
         </div>
-        <PlayerBoard {...this.props} playerId={0} />
-        <PlayerBoard {...this.props} playerId={1} />
-        <PlayerBoard {...this.props} playerId={2} />
-        <PlayerBoard {...this.props} playerId={3} />
+        <PlayerBoard {...this.props} turnOrderId={0} />
+        <PlayerBoard {...this.props} turnOrderId={1} />
+        <PlayerBoard {...this.props} turnOrderId={2} />
+        <PlayerBoard {...this.props} turnOrderId={3} />
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import { Game } from 'boardgame.io/core';
 import { initPlayer } from './player';
 import * as cs from './constants';
+import { setting } from './phase/setting';
+import { round } from './phase/round';
 
 const isValidActionCellId = function(id) {
   return cs.mainActionTitle[Math.floor(id / cs.maxBoardLength)][id % cs.maxBoardLength] !== '';
@@ -16,16 +18,10 @@ export const Agricola = Game({
       actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => {
         occupied: -1;
       }),
-      playersInfo: Array.from({ length: cs.defaultPlayerNum }, i => initPlayer(i)),
-      progress: {
-        round: 0,
-        startPos: 0,
-        nextStartPos: 0,
-        harvest: false
-      },
+      playersInfo: undefined,
       secret: {
-        roundSeq: cs.stageActions
-      }
+        roundSeq: undefined,
+      },
     };
     return g;
   },
@@ -38,11 +34,11 @@ export const Agricola = Game({
         return { ...G, actionCells };
       }
       alert('invalid click');
-    }
+    },
   },
 
   flow: {
-    //onTurnBegin: (G, ctx) => {}
+    phases: [setting, round(1)],
   },
 
   playerView: (G, ctx, playerID) => {
@@ -52,12 +48,12 @@ export const Agricola = Game({
       delete r.secret;
     }
 
-    for (let i = 0; i < cs.defaultPlayerNum; i++) {
-      if (i !== playerID) {
+    for (let i = 0; i < ctx.numPlayers; i++) {
+      if (r.playersInfo[i].id !== playerID) {
         delete r.playersInfo[i].secret;
       }
     }
 
     return r;
-  }
+  },
 });

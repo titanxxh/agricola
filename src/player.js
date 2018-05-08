@@ -26,7 +26,7 @@ export class player {
   }
 }
 
-export function initPlayer(id) {
+export function initPlayer(id, startingFood = 3) {
   return new player({
     id: id,
     playerPublic: new playerPublic({
@@ -37,10 +37,10 @@ export function initPlayer(id) {
         totalStables: 4,
         stables: [],
         totalFences: 15,
-        fences: []
+        fences: [],
       },
       resources: {
-        food: 0,
+        food: startingFood,
         wood: 0,
         clay: 0,
         stone: 0,
@@ -49,14 +49,14 @@ export function initPlayer(id) {
         vegetable: 0,
         sheep: 0,
         boar: 0,
-        cattle: 0
+        cattle: 0,
       },
       improvements: [],
-      occupations: []
+      occupations: [],
     }),
     playerSecret: new playerSecret({
       minors: [],
-      occupations: []
-    })
+      occupations: [],
+    }),
   });
 }

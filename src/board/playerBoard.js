@@ -9,7 +9,7 @@ const playerBoardLength = 11;
 const indexToAccor = function(index) {
   return {
     x: Math.floor(index / playerBoardLength),
-    y: index % playerBoardLength
+    y: index % playerBoardLength,
   };
 };
 
@@ -32,7 +32,7 @@ export class PlayerBoard extends React.Component {
   }
 
   render() {
-    const id = this.props.playerId;
+    const pId = this.props.G.playersInfo[this.props.turnOrderId].id;
 
     let tbody = [];
     for (let i = 0; i < playerBoardHeight; i++) {
@@ -49,14 +49,14 @@ export class PlayerBoard extends React.Component {
     }
 
     return (
-      <div className={cs.playerColor[id]}>
-        <div>Player {id} Board</div>
+      <div className={cs.playerColor[pId]}>
+        <div>Player {pId} Board</div>
         <div>
           <table id="playerBoard">
             <tbody>{tbody}</tbody>
           </table>
         </div>
-        <ResourcesBoard player={this.props.G.playersInfo[id]} />
+        <ResourcesBoard player={this.props.G.playersInfo[pId]} />
       </div>
     );
   }

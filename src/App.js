@@ -15,7 +15,7 @@ const AgricolaClient = Client({
   enhancer: compose(
     applyMiddleware(logger),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  ),
 });
 
 const App = () => (
