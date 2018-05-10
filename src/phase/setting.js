@@ -30,7 +30,15 @@ export const setting = {
     log('setting phase starting');
     let r = { ...G };
     const rand = Math.random; //ctx.random.Number
+
     r.secret.roundSeq = cs.getShuffledStageActions(rand);
+    r.secret.roundSeq.forEach((v, i) => {
+      const title = 'Round' + (i + 1);
+      const builder = cs.mainActions[v];
+      r.mainActions.set(title, builder());
+    });
+    console.log('stage action set');
+
     r.playersInfo = Array.from({ length: ctx.numPlayers }, (v, i) => initPlayer(i));
     r.sittingOrder = cs.shuffleArray(Array.from({ length: ctx.numPlayers }, (v, i) => i), rand);
 

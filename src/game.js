@@ -19,12 +19,23 @@ export const Agricola = Game({
       secret: {
         roundSeq: undefined,
       },
+      mainActions: new Map(),
       actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => {
         return {
           occupied: -1,
         };
       }),
     };
+    for (let i = 0; i < cs.maxBoardHeight; i++) {
+      for (let j = 0; j < cs.maxBoardLength; j++) {
+        const title = cs.mainActionTitle[i][j];
+        if (title === '' || title.indexOf('Round') === 0) {
+          continue;
+        }
+        g.mainActions.set(title, cs.mainActions[title]());
+      }
+    }
+    console.log('basic action set');
     return g;
   },
 

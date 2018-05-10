@@ -5,6 +5,10 @@ export class Copse extends ActionCard {
     super({ delta: 1 });
   }
 
+  title() {
+    return 'Copse';
+  }
+
   show() {
     return `${this.acc} wood`;
   }

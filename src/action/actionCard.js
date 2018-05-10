@@ -1,11 +1,20 @@
 export class ActionCard {
   constructor({ delta }) {
-    this.occupied = -1;
+    this.occupied = [];
     this.acc = 0;
     this.delta = delta;
   }
 
-  isAcc() {
+  canChooseByPlayer(id) {
+    // todo may be override by subclass
+    return this.occupied.length === 0;
+  }
+
+  occupiedBy() {
+    return this.occupied;
+  }
+
+  isAccumulative() {
     return this.delta > 0;
   }
 

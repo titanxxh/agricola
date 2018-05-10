@@ -5,8 +5,12 @@ export class Dummy extends ActionCard {
     super({ delta: 0 });
   }
 
+  title() {
+    return 'dummy';
+  }
+
   show() {
-    return `+1 dummy`;
+    return '';
   }
 
   detail() {

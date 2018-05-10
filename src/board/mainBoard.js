@@ -49,28 +49,41 @@ export class MainBoard extends React.Component {
   }
 
   render() {
+    const currentPlayerId = this.props.ctx.currentPlayer;
+
     let tbody = [];
     for (let i = 0; i < cs.maxBoardHeight; i++) {
       let cells = [];
       for (let j = 0; j < cs.maxBoardLength; j++) {
         const index = cs.maxBoardLength * i + j;
+        const title = cs.mainActionTitle[i][j];
+        if (title !== '') {
+          const action = this.props.G.mainActions.get(title);
+          if (action !== undefined) {
+            console.log(action);
+            cells.push(
+              <td
+                key={index}
+                className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
+                onClick={() => this.onClickMainAction(index)}
+              >
+                <p>{action.title()}</p>
+                <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+                <p>{action.show()}</p>
+                <p>{action.detail()}</p>
+              </td>
+            );
+            continue;
+          }
+        }
         cells.push(
-          <td
-            key={index}
-            className={
-              'action ' +
-              (this.isUnoccupied(index) ? 'active' : cs.playerColor[this.props.G.actionCells[index].occupied])
-            }
-            onClick={() => this.onClickMainAction(index)}
-          >
-            {`${cs.mainActionTitle[i][j]} ${this.props.G.actionCells[index].occupied}`}
+          <td key={index} className={'action'}>
+            {title}BLANK
           </td>
         );
       }
       tbody.push(<tr key={i}>{cells}</tr>);
     }
-
-    const currentPlayerId = this.props.ctx.currentPlayer;
 
     return (
       <div className={cs.playerColor[currentPlayerId]}>

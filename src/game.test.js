@@ -1,5 +1,3 @@
-import * as cs from './constants';
-
 test('playground', () => {
   let a = Array.from({ length: 0 }, () => {
     return {
