@@ -32,7 +32,7 @@ export class PlayerBoard extends React.Component {
   }
 
   render() {
-    const pId = this.props.G.playersInfo[this.props.turnOrderId].id;
+    const pId = this.props.G.sittingOrder[this.props.turnOrderId];
 
     let tbody = [];
     for (let i = 0; i < playerBoardHeight; i++) {
@@ -50,7 +50,9 @@ export class PlayerBoard extends React.Component {
 
     return (
       <div className={cs.playerColor[pId]}>
-        <div>Player {pId} Board</div>
+        <div>
+          Player {pId} Board, {this.props.G.startingPlayerToken === pId ? 'S' : ''}
+        </div>
         <div>
           <table id="playerBoard">
             <tbody>{tbody}</tbody>

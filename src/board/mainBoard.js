@@ -23,15 +23,21 @@ export class MainBoard extends React.Component {
     this.props.redo();
   }
 
-  onClickResetButton() {
-    console.log('reset');
-    this.props.reset();
-  }
-
   onClickConfirmButton() {
     console.log('confirm');
     // todo not end turn
     this.props.events.endTurn();
+  }
+
+  onClickDraftButton() {
+    console.log('draft');
+    this.props.moves.draft();
+    this.props.events.endTurn();
+  }
+
+  onClickResetButton() {
+    console.log('reset');
+    this.props.reset();
   }
 
   isUnoccupied(index) {
@@ -74,6 +80,9 @@ export class MainBoard extends React.Component {
             <Button onClick={() => this.onClickUndoButton()}>Undo</Button>
             <Button onClick={() => this.onClickRedoButton()}>Redo</Button>
             <Button onClick={() => this.onClickConfirmButton()}>Confirm</Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button onClick={() => this.onClickDraftButton()}>Draft</Button>
             <Button onClick={() => this.onClickResetButton()}>Reset</Button>
           </ButtonGroup>
         </div>

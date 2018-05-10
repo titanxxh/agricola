@@ -22,13 +22,14 @@ export class player {
   }
 
   hasAvailableMembers() {
-    return this.public.workingMembers.length < this.public.farm.members + this.public.farm.guests;
+    return this.public.farm.workingMembers.length < this.public.farm.members + this.public.farm.guests;
   }
 }
 
 export function initPlayer(id, startingFood = 3) {
   return new player({
     id: id,
+    draftDone: false,
     playerPublic: new playerPublic({
       farm: {
         members: 2,

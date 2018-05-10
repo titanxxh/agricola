@@ -1,5 +1,4 @@
 import { Game } from 'boardgame.io/core';
-import { initPlayer } from './player';
 import * as cs from './constants';
 import { setting } from './phase/setting';
 import { round } from './phase/round';
@@ -15,13 +14,16 @@ export const isActionCellUnoccupied = function(G, id) {
 export const Agricola = Game({
   setup: () => {
     let g = {
-      actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => {
-        occupied: -1;
-      }),
+      sittingOrder: undefined,
       playersInfo: undefined,
       secret: {
         roundSeq: undefined,
       },
+      actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => {
+        return {
+          occupied: -1,
+        };
+      }),
     };
     return g;
   },
@@ -34,6 +36,14 @@ export const Agricola = Game({
         return { ...G, actionCells };
       }
       alert('invalid click');
+    },
+
+    draft(G, ctx) {
+      // todo
+      // now we use it to get player ready
+      let playersInfo = [...G.playersInfo];
+      playersInfo[ctx.currentPlayer].draftDone = true;
+      return { ...G, playersInfo };
     },
   },
 
