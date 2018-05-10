@@ -9,7 +9,7 @@ const playerBoardLength = 11;
 const indexToAccor = function(index) {
   return {
     x: Math.floor(index / playerBoardLength),
-    y: index % playerBoardLength
+    y: index % playerBoardLength,
   };
 };
 
@@ -27,17 +27,12 @@ const indexToType = function(index) {
 };
 
 export class PlayerBoard extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('playerboard' + JSON.stringify(props));
-  }
-
   onClick(id) {
     alert(JSON.stringify(indexToAccor(id)));
   }
 
   render() {
-    const id = this.props.playerId;
+    const pId = this.props.G.sittingOrder[this.props.turnOrderId];
 
     let tbody = [];
     for (let i = 0; i < playerBoardHeight; i++) {
@@ -45,11 +40,7 @@ export class PlayerBoard extends React.Component {
       for (let j = 0; j < playerBoardLength; j++) {
         const index = playerBoardLength * i + j;
         cells.push(
-          <td
-            key={index}
-            className={'player ' + indexToType(index)}
-            onClick={() => this.onClick(index)}
-          >
+          <td key={index} className={'player ' + indexToType(index)} onClick={() => this.onClick(index)}>
             {/*{indexToType(index)}*/}
           </td>
         );
@@ -58,14 +49,16 @@ export class PlayerBoard extends React.Component {
     }
 
     return (
-      <div className={cs.playerColor[id]}>
-        <div>Player {id} Board</div>
+      <div className={cs.playerColor[pId]}>
+        <div>
+          Player {pId} Board, {this.props.G.startingPlayerToken === pId ? 'S' : ''}
+        </div>
         <div>
           <table id="playerBoard">
             <tbody>{tbody}</tbody>
           </table>
         </div>
-        <ResourcesBoard player={this.props.G.playersInfo[id]} />
+        <ResourcesBoard player={this.props.G.playersInfo[pId]} />
       </div>
     );
   }

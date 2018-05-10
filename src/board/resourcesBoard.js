@@ -29,15 +29,8 @@ export class ResourcesBoard extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>
-                {farm.totalFences - farm.fences.length + '/' + farm.totalFences}
-              </td>
-              <td>
-                {farm.totalStables -
-                  farm.stables.length +
-                  '/' +
-                  farm.totalStables}
-              </td>
+              <td>{farm.totalFences - farm.fences.length + '/' + farm.totalFences}</td>
+              <td>{farm.totalStables - farm.stables.length + '/' + farm.totalStables}</td>
               <td>{res.wood}</td>
               <td>{res.clay}</td>
               <td>{res.stone}</td>
@@ -48,9 +41,7 @@ export class ResourcesBoard extends React.Component {
               <td>{res.boar}</td>
               <td>{res.cattle}</td>
               <td>{res.food}</td>
-              <td>
-                {farm.members - farm.workingMembers.length + '/' + farm.members}
-              </td>
+              <td>{`${farm.members + farm.guests - farm.workingMembers.length}/${farm.members + farm.guests}`}</td>
             </tr>
           </tbody>
         </table>
