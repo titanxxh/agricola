@@ -10,7 +10,7 @@ export class Copse extends ActionCard {
   }
 
   detail() {
-    return `acc ${this.delta} wood`;
+    return '1 wood >';
   }
 
   show() {

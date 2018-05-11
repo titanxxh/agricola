@@ -1,16 +1,16 @@
 import { ActionCard } from './actionCard';
 
-export class Dummy extends ActionCard {
+export class WesternQuarry extends ActionCard {
   constructor() {
     super({ delta: 0 });
   }
 
   title() {
-    return 'Title';
+    return 'WesternQuarry';
   }
 
   detail() {
-    return `Detail`;
+    return '';
   }
 
   show() {

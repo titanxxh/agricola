@@ -1,4 +1,4 @@
-import { Copse } from './copse';
+import { Copse } from './Copse';
 
 test('copse acc wood', () => {
   let a = new Copse();

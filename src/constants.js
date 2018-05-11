@@ -1,5 +1,33 @@
-import { Copse } from './action/copse';
-import { Dummy } from './action/dummy';
+import { Copse } from './action/Copse';
+import { Grove } from './action/Grove';
+import { ResourceMarket } from './action/ResourceMarket';
+import { Hollow } from './action/Hollow';
+import { Lessons2 } from './action/Lessons2';
+import { TravelingPlayers } from './action/TravelingPlayers';
+import { FarmExpansion } from './action/FarmExpansion';
+import { MeetingPlace } from './action/MeetingPlace';
+import { GrainSeeds } from './action/GrainSeeds';
+import { Farmland } from './action/Farmland';
+import { Lessons1 } from './action/Lessons1';
+import { DayLaborer } from './action/DayLaborer';
+import { Forest } from './action/Forest';
+import { ClayPit } from './action/ClayPit';
+import { ReedBank } from './action/ReedBank';
+import { Fishing } from './action/Fishing';
+import { Fencing } from './action/Fencing';
+import { GrainUtilization } from './action/GrainUtilization';
+import { MajorImprovement } from './action/MajorImprovement';
+import { SheepMarket } from './action/SheepMarket';
+import { HouseRedevelopment } from './action/HouseRedevelopment';
+import { WesternQuarry } from './action/WesternQuarry';
+import { BasicWishForChildren } from './action/BasicWishForChildren';
+import { PigMarket } from './action/PigMarket';
+import { VegetableSeeds } from './action/VegetableSeeds';
+import { EasternQuarry } from './action/EasternQuarry';
+import { CattleMarket } from './action/CattleMarket';
+import { UrgentWishForChildren } from './action/UrgentWishForChildren';
+import { Cultivation } from './action/Cultivation';
+import { FarmRedevelopment } from './action/FarmRedevelopment';
 
 export const maxBoardLength = 9;
 export const maxBoardHeight = 6;
@@ -17,35 +45,35 @@ export const maxRound = 14;
 
 export const mainActions = {
   Copse: () => new Copse(),
-  Grove: () => new Dummy(),
-  ResourceMarket: () => new Dummy(),
-  Hollow: () => new Dummy(),
-  Lessons2: () => new Dummy(),
-  TravelingPlayers: () => new Dummy(),
-  FarmExpansion: () => new Dummy(),
-  MeetingPlace: () => new Dummy(),
-  GrainSeeds: () => new Dummy(),
-  Farmland: () => new Dummy(),
-  Lessons1: () => new Dummy(),
-  DayLaborer: () => new Dummy(),
-  Forest: () => new Dummy(),
-  ClayPit: () => new Dummy(),
-  ReedBank: () => new Dummy(),
-  Fishing: () => new Dummy(),
-  Fencing: () => new Dummy(),
-  GrainUtilization: () => new Dummy(),
-  MajorImprovement: () => new Dummy(),
-  SheepMarket: () => new Dummy(),
-  HouseRedevelopment: () => new Dummy(),
-  WesternQuarry: () => new Dummy(),
-  BasicWishForChildren: () => new Dummy(),
-  PigMarket: () => new Dummy(),
-  VegetableSeeds: () => new Dummy(),
-  EasternQuarry: () => new Dummy(),
-  CattleMarket: () => new Dummy(),
-  UrgentWishForChildren: () => new Dummy(),
-  Cultivation: () => new Dummy(),
-  FarmRedevelopment: () => new Dummy(),
+  Grove: () => new Grove(),
+  ResourceMarket: () => new ResourceMarket(),
+  Hollow: () => new Hollow(),
+  Lessons2: () => new Lessons2(),
+  TravelingPlayers: () => new TravelingPlayers(),
+  FarmExpansion: () => new FarmExpansion(),
+  MeetingPlace: () => new MeetingPlace(),
+  GrainSeeds: () => new GrainSeeds(),
+  Farmland: () => new Farmland(),
+  Lessons1: () => new Lessons1(),
+  DayLaborer: () => new DayLaborer(),
+  Forest: () => new Forest(),
+  ClayPit: () => new ClayPit(),
+  ReedBank: () => new ReedBank(),
+  Fishing: () => new Fishing(),
+  Fencing: () => new Fencing(),
+  GrainUtilization: () => new GrainUtilization(),
+  MajorImprovement: () => new MajorImprovement(),
+  SheepMarket: () => new SheepMarket(),
+  HouseRedevelopment: () => new HouseRedevelopment(),
+  WesternQuarry: () => new WesternQuarry(),
+  BasicWishForChildren: () => new BasicWishForChildren(),
+  PigMarket: () => new PigMarket(),
+  VegetableSeeds: () => new VegetableSeeds(),
+  EasternQuarry: () => new EasternQuarry(),
+  CattleMarket: () => new CattleMarket(),
+  UrgentWishForChildren: () => new UrgentWishForChildren(),
+  Cultivation: () => new Cultivation(),
+  FarmRedevelopment: () => new FarmRedevelopment(),
 };
 
 export const stageActions = [

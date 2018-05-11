@@ -68,9 +68,9 @@ export class MainBoard extends React.Component {
                 onClick={() => this.onClickMainAction(index)}
               >
                 <p>{action.title()}</p>
-                <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+                <p>{`(${action.detail()})`}</p>
                 <p>{action.show()}</p>
-                <p>{action.detail()}</p>
+                <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
               </td>
             );
             continue;
