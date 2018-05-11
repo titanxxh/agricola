@@ -1,8 +1,8 @@
-import { ActionCard } from './actionCard';
+import { stageAction } from './stageAction';
 
-export class WesternQuarry extends ActionCard {
-  constructor() {
-    super({ delta: 0 });
+export class WesternQuarry extends stageAction {
+  constructor({ round }) {
+    super({ round });
   }
 
   title() {

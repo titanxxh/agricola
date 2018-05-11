@@ -4,49 +4,46 @@ import { setting } from './phase/setting';
 import { round } from './phase/round';
 
 const isValidActionCellId = function(id) {
-  return cs.mainActionTitle[Math.floor(id / cs.maxBoardLength)][id % cs.maxBoardLength] !== '';
+  return cs.mainActionTitle[id] !== '';
 };
 
-export const isActionCellUnoccupied = function(G, id) {
+export const canChooseByPlayer = function(G, id) {
   return G.actionCells[id].occupied === -1 && isValidActionCellId(id);
 };
 
 export const Agricola = Game({
   setup: () => {
     let g = {
+      currentRound: 0,
       sittingOrder: undefined,
       playersInfo: undefined,
       secret: {
         roundSeq: undefined,
       },
       mainActions: new Map(),
-      actionCells: Array.from({ length: cs.maxBoardLength * cs.maxBoardHeight }, () => {
-        return {
-          occupied: -1,
-        };
-      }),
+      actionCells: [],
     };
-    for (let i = 0; i < cs.maxBoardHeight; i++) {
-      for (let j = 0; j < cs.maxBoardLength; j++) {
-        const title = cs.mainActionTitle[i][j];
-        if (title === '' || title.indexOf('Round') === 0) {
-          continue;
-        }
-        g.mainActions.set(title, cs.mainActions[title]());
+    cs.mainActionTitle.forEach((title, i) => {
+      if (title.indexOf('Round') === 0) {
+        return;
       }
-    }
+      g.actionCells.push(title);
+      g.mainActions.set(title, cs.mainActions[title]());
+    });
     console.log('basic action set');
     return g;
   },
 
   moves: {
-    clickCell(G, ctx, id) {
-      if (isActionCellUnoccupied(G, id)) {
-        const actionCells = [...G.actionCells];
-        actionCells[id].occupied = ctx.currentPlayer;
-        return { ...G, actionCells };
+    clickCell(G, ctx, title) {
+      let r = { ...G };
+      let action = r.mainActions.get(title);
+      if (!action.canChooseByPlayer(ctx.currentPlayer)) {
+        alert('invalid click');
+        return;
       }
-      alert('invalid click');
+      action.occupied.push(ctx.currentPlayer);
+      return r;
     },
 
     draft(G, ctx) {

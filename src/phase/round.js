@@ -28,6 +28,7 @@ export function round(i) {
     onPhaseBegin: (G, ctx) => {
       log('starting');
       let r = { ...G };
+      r.currentRound = i;
       r.startingPlayerToken = G.nextStartingPlayerToken;
       return r;
     },

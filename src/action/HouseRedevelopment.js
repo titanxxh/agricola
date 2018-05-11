@@ -1,8 +1,8 @@
-import { ActionCard } from './actionCard';
+import { stageAction } from './stageAction';
 
-export class HouseRedevelopment extends ActionCard {
-  constructor() {
-    super({ delta: 0 });
+export class HouseRedevelopment extends stageAction {
+  constructor({ round }) {
+    super({ round });
   }
 
   title() {

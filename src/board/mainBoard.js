@@ -5,10 +5,13 @@ import { ButtonGroup, Button } from 'reactstrap';
 import * as game from '../game';
 
 export class MainBoard extends React.Component {
-  onClickMainAction(index) {
+  onClickMainAction(i) {
     if (!this.isActive()) return;
-    if (this.isUnoccupied(index)) {
-      this.props.moves.clickCell(index);
+    const title = this.props.G.actionCells[i];
+    const action = this.props.G.mainActions.get(title);
+    console.log('onclick', i, title, action);
+    if (action.canChooseByPlayer(this.props.ctx.currentPlayer)) {
+      this.props.moves.clickCell(title);
       this.props.events.endTurn();
     }
   }
@@ -40,8 +43,8 @@ export class MainBoard extends React.Component {
     this.props.reset();
   }
 
-  isUnoccupied(index) {
-    return game.isActionCellUnoccupied(this.props.G, index);
+  canChooseByPlayer(i) {
+    return game.canChooseByPlayer(this.props.G, i);
   }
 
   isActive() {
@@ -52,37 +55,61 @@ export class MainBoard extends React.Component {
     const currentPlayerId = this.props.ctx.currentPlayer;
 
     let tbody = [];
-    for (let i = 0; i < cs.maxBoardHeight; i++) {
-      let cells = [];
-      for (let j = 0; j < cs.maxBoardLength; j++) {
-        const index = cs.maxBoardLength * i + j;
-        const title = cs.mainActionTitle[i][j];
-        if (title !== '') {
-          const action = this.props.G.mainActions.get(title);
-          if (action !== undefined) {
-            console.log(action);
-            cells.push(
+    let i = 0;
+    let cells = [];
+    let row = 0;
+    while (i < this.props.G.actionCells.length) {
+      const index = i;
+      const title = this.props.G.actionCells[index];
+      const action = this.props.G.mainActions.get(title);
+      let td = null;
+      if (action !== undefined) {
+        //console.log(action, 'on', i);
+        const round = action.round;
+        if (round === undefined) {
+          td = (
+            <td
+              key={index}
+              className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
+              onClick={() => this.onClickMainAction(index)}
+            >
+              <p>{action.title()}</p>
+              <p>{`(${action.detail()})`}</p>
+              <p>{action.show()}</p>
+              <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+            </td>
+          );
+        } else {
+          if (action.visible(this.props.G)) {
+            td = (
               <td
                 key={index}
                 className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
                 onClick={() => this.onClickMainAction(index)}
               >
+                <p>{`Round${round}`}</p>
                 <p>{action.title()}</p>
                 <p>{`(${action.detail()})`}</p>
                 <p>{action.show()}</p>
                 <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
               </td>
             );
-            continue;
+          } else {
+            td = (
+              <td key={index} className={`action`}>
+                <p>{`Round${round}`}</p>
+              </td>
+            );
           }
         }
-        cells.push(
-          <td key={index} className={'action'}>
-            {title}BLANK
-          </td>
-        );
       }
-      tbody.push(<tr key={i}>{cells}</tr>);
+      cells.push(td);
+      i++;
+      if (i % cs.maxBoardLength === 0) {
+        tbody.push(<tr key={row}>{cells}</tr>);
+        cells = [];
+        row++;
+      }
     }
 
     return (
