@@ -9,11 +9,11 @@ export class Copse extends ActionCard {
     return 'Copse';
   }
 
-  show() {
-    return `${this.acc} wood`;
-  }
-
   detail() {
     return `acc ${this.delta} wood`;
+  }
+
+  show() {
+    return `${this.acc} wood`;
   }
 }

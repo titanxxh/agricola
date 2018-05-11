@@ -6,14 +6,14 @@ export class Dummy extends ActionCard {
   }
 
   title() {
-    return 'dummy';
+    return 'Title';
+  }
+
+  detail() {
+    return `Detail`;
   }
 
   show() {
     return '';
-  }
-
-  detail() {
-    return `+1 dummy`;
   }
 }
