@@ -3,6 +3,7 @@ import { stageAction } from './stageAction';
 export class SheepMarket extends stageAction {
   constructor({ round }) {
     super({ round });
+    this.delta = 1;
   }
 
   title() {
@@ -10,10 +11,10 @@ export class SheepMarket extends stageAction {
   }
 
   detail() {
-    return '';
+    return `${this.delta} sheep >`;
   }
 
   show() {
-    return '';
+    return `${this.acc} sheep`;
   }
 }

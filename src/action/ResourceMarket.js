@@ -10,10 +10,10 @@ export class ResourceMarket extends ActionCard {
   }
 
   detail() {
-    return '';
+    return this.show();
   }
 
   show() {
-    return '';
+    return '+1 reed, stone, food';
   }
 }

@@ -10,10 +10,16 @@ export class Copse extends ActionCard {
   }
 
   detail() {
-    return '1 wood >';
+    return `${this.delta} wood >`;
   }
 
   show() {
     return `${this.acc} wood`;
+  }
+
+  executeByPlayer(G, id) {
+    super.executeByPlayer(G, id);
+    G.playersInfo[id].public.resources.wood += this.acc;
+    this.acc = 0;
   }
 }

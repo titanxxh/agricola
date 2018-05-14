@@ -2,7 +2,7 @@ import { ActionCard } from './actionCard';
 
 export class ClayPit extends ActionCard {
   constructor() {
-    super({ delta: 0 });
+    super({ delta: 1 });
   }
 
   title() {
@@ -10,10 +10,10 @@ export class ClayPit extends ActionCard {
   }
 
   detail() {
-    return '';
+    return `${this.delta} clay >`;
   }
 
   show() {
-    return '';
+    return `${this.acc} clay`;
   }
 }

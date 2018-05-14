@@ -10,10 +10,10 @@ export class DayLaborer extends ActionCard {
   }
 
   detail() {
-    return '';
+    return this.show();
   }
 
   show() {
-    return '';
+    return '+2 food';
   }
 }

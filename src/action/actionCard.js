@@ -21,4 +21,12 @@ export class ActionCard {
   onTurnBegin() {
     this.acc += this.delta;
   }
+
+  title() {
+    return '';
+  }
+
+  executeByPlayer(G, id) {
+    console.log(`${this.title()} is executing by ${id}`);
+  }
 }

@@ -30,6 +30,9 @@ export function round(i) {
       let r = { ...G };
       r.currentRound = i;
       r.startingPlayerToken = G.nextStartingPlayerToken;
+      r.mainActions.forEach((v, i) => {
+        v.onTurnBegin();
+      });
       return r;
     },
 

@@ -47,12 +47,7 @@ export class MainBoard extends React.Component {
     this.props.reset();
   }
 
-  canChooseByPlayer(i) {
-    return game.canChooseByPlayer(this.props.G, i);
-  }
-
   isActive() {
-    console.log(this.props);
     return this.props.isActive;
   }
 
@@ -62,7 +57,7 @@ export class MainBoard extends React.Component {
     console.log(`client ${clientId} current ${currentPlayerId} ${clientId === currentPlayerId}`);
 
     let tbody = [];
-    if (this.props.G.round > 0) {
+    if (this.props.G.currentRound > 0) {
       let i = 0;
       let cells = [];
       let row = 0;

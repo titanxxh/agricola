@@ -2,7 +2,7 @@ import { ActionCard } from './actionCard';
 
 export class Grove extends ActionCard {
   constructor() {
-    super({ delta: 0 });
+    super({ delta: 2 });
   }
 
   title() {
@@ -10,10 +10,10 @@ export class Grove extends ActionCard {
   }
 
   detail() {
-    return '';
+    return `${this.delta} wood >`;
   }
 
   show() {
-    return '';
+    return `${this.acc} wood`;
   }
 }

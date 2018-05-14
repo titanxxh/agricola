@@ -10,10 +10,10 @@ export class GrainSeeds extends ActionCard {
   }
 
   detail() {
-    return '';
+    return this.show();
   }
 
   show() {
-    return '';
+    return '+1 grain';
   }
 }

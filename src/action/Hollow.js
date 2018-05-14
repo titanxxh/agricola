@@ -2,7 +2,7 @@ import { ActionCard } from './actionCard';
 
 export class Hollow extends ActionCard {
   constructor() {
-    super({ delta: 0 });
+    super({ delta: 2 });
   }
 
   title() {
@@ -10,10 +10,10 @@ export class Hollow extends ActionCard {
   }
 
   detail() {
-    return '';
+    return `${this.delta} clay >`;
   }
 
   show() {
-    return '';
+    return `${this.acc} clay`;
   }
 }

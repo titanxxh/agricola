@@ -3,14 +3,6 @@ import * as cs from './constants';
 import { setting } from './phase/setting';
 import { round } from './phase/round';
 
-const isValidActionCellId = function(id) {
-  return cs.mainActionTitle[id] !== '';
-};
-
-export const canChooseByPlayer = function(G, id) {
-  return G.actionCells[id].occupied === -1 && isValidActionCellId(id);
-};
-
 export const Agricola = Game({
   setup: () => {
     let g = {
@@ -43,6 +35,7 @@ export const Agricola = Game({
         return;
       }
       action.occupied.push(ctx.currentPlayer);
+      action.executeByPlayer(r, ctx.currentPlayer);
       return r;
     },
 

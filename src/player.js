@@ -1,3 +1,5 @@
+import * as cs from './constants';
+
 export class playerPublic {
   constructor({ farm, resources, improvements, occupations }) {
     this.farm = farm;
@@ -29,6 +31,7 @@ export class player {
 export function initPlayer(id, startingFood = 3) {
   return new player({
     id: id,
+    color: cs.playerColor[id],
     draftDone: false,
     playerPublic: new playerPublic({
       farm: {
