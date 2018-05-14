@@ -11,22 +11,21 @@ const AgricolaClient = Client({
   game: Agricola,
   board: MainBoard,
   numPlayers: 4,
-  //multiplayer: { server: 'localhost:8000' },
+  multiplayer: { server: 'localhost:8000' },
+  //debug: false,
   enhancer: compose(
     applyMiddleware(logger),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   ),
 });
 
-// const App = () => (
-//   <div>
-//     <AgricolaClient playerID="0" />
-//   </div>
-// );
-
 const App = () => (
   <div>
-    <AgricolaClient />
+    {/*<AgricolaClient />*/}
+    {/*<AgricolaClient playerID="0" />*/}
+    <AgricolaClient playerID="1" />
+    {/*<AgricolaClient playerID="2" />*/}
+    {/*<AgricolaClient playerID="3" />*/}
   </div>
 );
 

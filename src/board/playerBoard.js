@@ -51,7 +51,7 @@ export class PlayerBoard extends React.Component {
     return (
       <div className={cs.playerColor[pId]}>
         <div>
-          Player {pId} Board, {this.props.G.startingPlayerToken === pId ? 'S' : ''}
+          Player {cs.playerColor[pId]} Board, {this.props.G.startingPlayerToken === pId ? 'Starter Player' : ''}
         </div>
         <div>
           <table id="playerBoard">
