@@ -1,9 +1,11 @@
 import { stageAction } from './stageAction';
+import { accumulative } from './mixins/accumulative';
+import { collective } from './mixins/collective';
 
-export class CattleMarket extends stageAction {
+export class CattleMarket extends collective(accumulative(stageAction)) {
   constructor({ round }) {
     super({ round });
-    this.delta = 1;
+    Object.assign(this, { delta: 1, type: 'cattle' });
   }
 
   title() {
@@ -11,10 +13,10 @@ export class CattleMarket extends stageAction {
   }
 
   detail() {
-    return `${this.delta} cattle >`;
+    return `${this.delta} ${this.type} >`;
   }
 
   show() {
-    return `${this.acc} cattle`;
+    return `${this.acc} ${this.type}`;
   }
 }

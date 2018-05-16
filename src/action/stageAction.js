@@ -9,4 +9,8 @@ export class stageAction extends ActionCard {
   visible(G) {
     return this.round <= G.currentRound;
   }
+
+  clearResourceOfPlayer(G, id) {
+    this.acc = 0;
+  }
 }

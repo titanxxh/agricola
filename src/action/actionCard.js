@@ -1,8 +1,10 @@
 export class ActionCard {
-  constructor({ delta }) {
+  constructor() {
     this.occupied = [];
-    this.acc = 0;
-    this.delta = delta;
+  }
+
+  title() {
+    return '';
   }
 
   canChooseByPlayer(id) {
@@ -14,16 +16,10 @@ export class ActionCard {
     return this.occupied;
   }
 
-  isAccumulative() {
-    return this.delta > 0;
-  }
+  onTurnBegin() {}
 
-  onTurnBegin() {
-    this.acc += this.delta;
-  }
-
-  title() {
-    return '';
+  getResourceOfPlayer(G, id) {
+    return {};
   }
 
   executeByPlayer(G, id) {
