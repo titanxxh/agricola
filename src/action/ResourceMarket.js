@@ -1,10 +1,8 @@
 import { ActionCard } from './actionCard';
+import { mergeResources } from './mixins/helperFunc';
+import { collective } from './mixins/collective';
 
-export class ResourceMarket extends ActionCard {
-  constructor() {
-    super({ delta: 0 });
-  }
-
+class resourceMarket extends ActionCard {
   title() {
     return 'ResourceMarket';
   }
@@ -16,4 +14,10 @@ export class ResourceMarket extends ActionCard {
   show() {
     return '+1 reed, stone, food';
   }
+
+  getResourceOfPlayer(G, id) {
+    return mergeResources(super.getResourceOfPlayer(), { reed: 1, stone: 1, food: 1 });
+  }
 }
+
+export class ResourceMarket extends collective(resourceMarket) {}

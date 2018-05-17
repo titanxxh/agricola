@@ -1,6 +1,8 @@
 import { stageAction } from './stageAction';
+import { collective } from './mixins/collective';
+import { mergeResources } from './mixins/helperFunc';
 
-export class VegetableSeeds extends stageAction {
+class vegetableSeeds extends stageAction {
   constructor({ round }) {
     super({ round });
   }
@@ -15,5 +17,15 @@ export class VegetableSeeds extends stageAction {
 
   show() {
     return '';
+  }
+
+  getResourceOfPlayer(G, id) {
+    return mergeResources(super.getResourceOfPlayer(), { vegetable: 1 });
+  }
+}
+
+export class VegetableSeeds extends collective(vegetableSeeds) {
+  constructor({ round }) {
+    super({ round });
   }
 }

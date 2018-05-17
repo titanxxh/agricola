@@ -1,10 +1,8 @@
 import { ActionCard } from './actionCard';
+import { collective } from './mixins/collective';
+import { mergeResources } from './mixins/helperFunc';
 
-export class DayLaborer extends ActionCard {
-  constructor() {
-    super({ delta: 0 });
-  }
-
+class dayLaborer extends ActionCard {
   title() {
     return 'DayLaborer';
   }
@@ -16,4 +14,10 @@ export class DayLaborer extends ActionCard {
   show() {
     return '+2 food';
   }
+
+  getResourceOfPlayer(G, id) {
+    return mergeResources(super.getResourceOfPlayer(), { food: 2 });
+  }
 }
+
+export class DayLaborer extends collective(dayLaborer) {}

@@ -22,6 +22,8 @@ export class ActionCard {
     return {};
   }
 
+  clearResourceOfPlayer(G, id) {}
+
   executeByPlayer(G, id) {
     console.log(`${this.title()} is executing by ${id}`);
   }

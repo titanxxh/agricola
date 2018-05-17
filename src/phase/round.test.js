@@ -6,14 +6,15 @@ test('round robin turn order', () => {
   const numPlayers = 4;
   let G = {
     playersInfo: Array.from({ length: numPlayers }, (v, i) => initPlayer(i)),
+    sittingOrder: Array.from({ length: numPlayers }, (v, i) => i),
     startingPlayerToken: 1,
   };
   const round1 = round(1);
   expect(round1.turnOrder.first(G, {})).toBe(1);
   expect(
     round1.turnOrder.next(G, {
-      playOrderPos: 1,
-      playOrder: Array.from({ length: numPlayers }, (v, i) => i),
+      currentPlayer: '1',
+      numPlayers: numPlayers,
     })
   ).toBe(2);
 });

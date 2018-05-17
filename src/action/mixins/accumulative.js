@@ -1,3 +1,5 @@
+import { mergeResources } from './helperFunc';
+
 export const accumulative = Sup =>
   class extends Sup {
     constructor(...args) {
@@ -11,13 +13,9 @@ export const accumulative = Sup =>
     }
 
     getResourceOfPlayer(G, id) {
-      let res = super.getResourceOfPlayer();
-      if (res[this.type] !== undefined) {
-        res[this.type] += this.acc;
-      } else {
-        res[this.type] = this.acc;
-      }
-      return Object.assign({}, res);
+      let v = {};
+      v[this.type] = this.acc;
+      return mergeResources(super.getResourceOfPlayer(), v);
     }
 
     clearResourceOfPlayer(G, id) {
