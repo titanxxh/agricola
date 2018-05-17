@@ -38,10 +38,10 @@ export const setting = {
       r.actionCells.push(title);
       r.mainActions.set(title, builder({ round: i + 1 }));
     });
-    console.log('stage action set', 'cell length', r.actionCells.length);
 
     r.playersInfo = Array.from({ length: ctx.numPlayers }, (v, i) => initPlayer(i));
-    r.sittingOrder = cs.shuffleArray(Array.from({ length: ctx.numPlayers }, (v, i) => i), rand);
+    r.sittingOrder = Array.from({ length: ctx.numPlayers }, (v, i) => i);
+    //r.sittingOrder = cs.shuffleArray(Array.from({ length: ctx.numPlayers }, (v, i) => i), rand);
 
     r.startingPlayerToken = r.sittingOrder[0];
     r.nextStartingPlayerToken = r.startingPlayerToken;

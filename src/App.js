@@ -11,7 +11,7 @@ const AgricolaClient = Client({
   game: Agricola,
   board: MainBoard,
   numPlayers: 4,
-  //multiplayer: { server: 'localhost:8000' },
+  multiplayer: { server: 'localhost:8000' },
   //debug: false,
   enhancer: compose(
     applyMiddleware(logger),
@@ -21,8 +21,8 @@ const AgricolaClient = Client({
 
 const App = () => (
   <div>
-    <AgricolaClient />
-    {/*<AgricolaClient playerID="0" />*/}
+    {/*<AgricolaClient />*/}
+    <AgricolaClient playerID="0" />
     {/*<AgricolaClient playerID="1" />*/}
     {/*<AgricolaClient playerID="2" />*/}
     {/*<AgricolaClient playerID="3" />*/}

@@ -22,7 +22,6 @@ export const Agricola = Game({
       g.actionCells.push(title);
       g.mainActions.set(title, cs.mainActions[title]());
     });
-    console.log('basic action set');
     return g;
   },
 
@@ -40,7 +39,7 @@ export const Agricola = Game({
     },
 
     draft(G, ctx) {
-      // todo
+      // todo drafting cards
       // now we use it to get player ready
       let playersInfo = [...G.playersInfo];
       playersInfo[ctx.currentPlayer].draftDone = true;

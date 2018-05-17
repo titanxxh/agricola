@@ -1,5 +1,4 @@
 import { CattleMarket } from './CattleMarket';
-import { Copse } from './Copse';
 import { initPlayer } from '../player';
 
 test('cattle market acc cattle', () => {

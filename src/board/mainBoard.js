@@ -2,7 +2,6 @@ import React from 'react';
 import { PlayerBoard } from './playerBoard';
 import * as cs from '../constants';
 import { ButtonGroup, Button } from 'reactstrap';
-import * as game from '../game';
 
 export class MainBoard extends React.Component {
   onClickMainAction(i) {
@@ -38,6 +37,7 @@ export class MainBoard extends React.Component {
   onClickDraftButton() {
     if (!this.isActive()) return;
     console.log('draft');
+    console.log(this.props);
     this.props.moves.draft();
     this.props.events.endTurn();
   }
