@@ -1,8 +1,11 @@
 import { ActionCard } from './actionCard';
+import { accumulative } from './mixins/accumulative';
+import { collective } from './mixins/collective';
 
-export class TravelingPlayers extends ActionCard {
+export class TravelingPlayers extends collective(accumulative(ActionCard)) {
   constructor() {
-    super({ delta: 1 });
+    super();
+    Object.assign(this, { delta: 1, type: 'food' });
   }
 
   title() {
@@ -10,10 +13,10 @@ export class TravelingPlayers extends ActionCard {
   }
 
   detail() {
-    return `${this.delta} food >`;
+    return `${this.delta} ${this.type} >`;
   }
 
   show() {
-    return `${this.acc} food`;
+    return `${this.acc} ${this.type}`;
   }
 }

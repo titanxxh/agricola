@@ -1,9 +1,11 @@
 import { stageAction } from './stageAction';
+import { accumulative } from './mixins/accumulative';
+import { collective } from './mixins/collective';
 
-export class EasternQuarry extends stageAction {
+export class EasternQuarry extends collective(accumulative(stageAction)) {
   constructor({ round }) {
     super({ round });
-    this.delta = 1;
+    Object.assign(this, { delta: 1, type: 'stone' });
   }
 
   title() {
@@ -11,10 +13,10 @@ export class EasternQuarry extends stageAction {
   }
 
   detail() {
-    return `${this.delta} stone >`;
+    return `${this.delta} ${this.type} >`;
   }
 
   show() {
-    return `${this.acc} stone`;
+    return `${this.acc} ${this.type}`;
   }
 }

@@ -1,8 +1,11 @@
 import { ActionCard } from './actionCard';
+import { accumulative } from './mixins/accumulative';
+import { collective } from './mixins/collective';
 
-export class Forest extends ActionCard {
+export class Forest extends collective(accumulative(ActionCard)) {
   constructor() {
-    super({ delta: 3 });
+    super();
+    Object.assign(this, { delta: 1, type: 'wood' });
   }
 
   title() {
@@ -10,10 +13,10 @@ export class Forest extends ActionCard {
   }
 
   detail() {
-    return `${this.delta} wood >`;
+    return `${this.delta} ${this.type} >`;
   }
 
   show() {
-    return `${this.acc} wood`;
+    return `${this.acc} ${this.type}`;
   }
 }

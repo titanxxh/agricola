@@ -1,8 +1,11 @@
 import { ActionCard } from './actionCard';
+import { accumulative } from './mixins/accumulative';
+import { collective } from './mixins/collective';
 
-export class Hollow extends ActionCard {
+export class Hollow extends collective(accumulative(ActionCard)) {
   constructor() {
-    super({ delta: 2 });
+    super();
+    Object.assign(this, { delta: 2, type: 'clay' });
   }
 
   title() {
@@ -10,10 +13,10 @@ export class Hollow extends ActionCard {
   }
 
   detail() {
-    return `${this.delta} clay >`;
+    return `${this.delta} ${this.type} >`;
   }
 
   show() {
-    return `${this.acc} clay`;
+    return `${this.acc} ${this.type}`;
   }
 }

@@ -1,8 +1,8 @@
 export const collective = Sup =>
   class extends Sup {
-    constructor(...args) {
-      super(...args);
-    }
+    // constructor(...args) {
+    //   super(...args);
+    // }
 
     executeByPlayer(G, id) {
       if (super.executeByPlayer) {
