@@ -4,12 +4,8 @@ import { collective } from './mixins/collective';
 
 export class SheepMarket extends collective(accumulative(stageAction)) {
   constructor({ round }) {
-    super({ round });
+    super({ round, title: 'SheepMarket' });
     Object.assign(this, { delta: 1, type: 'sheep' });
-  }
-
-  title() {
-    return 'SheepMarket';
   }
 
   detail() {

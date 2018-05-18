@@ -33,6 +33,9 @@ export function round(i) {
       r.mainActions.forEach((v, i) => {
         v.onTurnBegin();
       });
+      r.playersInfo.forEach((v, i) => {
+        v.public.farm.newborn = 0;
+      });
       return r;
     },
 

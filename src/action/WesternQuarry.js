@@ -4,12 +4,8 @@ import { collective } from './mixins/collective';
 
 export class WesternQuarry extends collective(accumulative(stageAction)) {
   constructor({ round }) {
-    super({ round });
+    super({ round, title: 'WesternQuarry' });
     Object.assign(this, { delta: 1, type: 'stone' });
-  }
-
-  title() {
-    return 'WesternQuarry';
   }
 
   detail() {

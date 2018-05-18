@@ -36,6 +36,7 @@ export function initPlayer(id, startingFood = 3) {
     playerPublic: new playerPublic({
       farm: {
         members: 2,
+        newborn: 0,
         guests: 0,
         workingMembers: [],
         totalStables: 4,

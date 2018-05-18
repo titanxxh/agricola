@@ -3,8 +3,8 @@ import { mergeResources } from './mixins/helperFunc';
 import { collective } from './mixins/collective';
 
 class resourceMarket extends ActionCard {
-  title() {
-    return 'ResourceMarket';
+  constructor() {
+    super({ title: 'ResourceMarket' });
   }
 
   detail() {

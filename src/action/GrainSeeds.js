@@ -3,8 +3,8 @@ import { mergeResources } from './mixins/helperFunc';
 import { collective } from './mixins/collective';
 
 class grainSeeds extends ActionCard {
-  title() {
-    return 'GrainSeeds';
+  constructor() {
+    super({ title: 'GrainSeeds' });
   }
 
   detail() {

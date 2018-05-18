@@ -3,8 +3,8 @@ import { collective } from './mixins/collective';
 import { mergeResources } from './mixins/helperFunc';
 
 class dayLaborer extends ActionCard {
-  title() {
-    return 'DayLaborer';
+  constructor() {
+    super({ title: 'DayLaborer' });
   }
 
   detail() {

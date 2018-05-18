@@ -33,7 +33,6 @@ export const Agricola = Game({
         alert('invalid click');
         return;
       }
-      action.occupied.push(ctx.currentPlayer);
       action.executeByPlayer(r, ctx.currentPlayer);
       return r;
     },

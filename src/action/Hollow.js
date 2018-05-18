@@ -4,12 +4,8 @@ import { collective } from './mixins/collective';
 
 export class Hollow extends collective(accumulative(ActionCard)) {
   constructor() {
-    super();
+    super({ title: 'Hollow' });
     Object.assign(this, { delta: 2, type: 'clay' });
-  }
-
-  title() {
-    return 'Hollow';
   }
 
   detail() {

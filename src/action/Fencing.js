@@ -2,11 +2,7 @@ import { stageAction } from './stageAction';
 
 export class Fencing extends stageAction {
   constructor({ round }) {
-    super({ round });
-  }
-
-  title() {
-    return 'Fencing';
+    super({ round, title: 'Fencing' });
   }
 
   detail() {

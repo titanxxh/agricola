@@ -1,10 +1,11 @@
 export class ActionCard {
-  constructor() {
+  constructor({ title }) {
     this.occupied = [];
+    this._title = title;
   }
 
   title() {
-    return '';
+    return this._title;
   }
 
   canChooseByPlayer(id) {
@@ -26,5 +27,8 @@ export class ActionCard {
 
   executeByPlayer(G, id) {
     console.log(`${this.title()} is executing by ${id}`);
+    let p = G.playersInfo[id].public;
+    p.farm.workingMembers.push(this.title());
+    this.occupied.push(id);
   }
 }

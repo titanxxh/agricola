@@ -1,8 +1,8 @@
 import { ActionCard } from './actionCard';
 
 export class stageAction extends ActionCard {
-  constructor({ round }) {
-    super({ delta: 0 });
+  constructor({ round, title }) {
+    super({ title });
     this.round = round;
   }
 

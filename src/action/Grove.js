@@ -4,12 +4,8 @@ import { collective } from './mixins/collective';
 
 export class Grove extends collective(accumulative(ActionCard)) {
   constructor() {
-    super();
+    super({ title: 'Grove' });
     Object.assign(this, { delta: 1, type: 'wood' });
-  }
-
-  title() {
-    return 'Grove';
   }
 
   detail() {

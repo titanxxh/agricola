@@ -4,11 +4,7 @@ import { mergeResources } from './mixins/helperFunc';
 
 class vegetableSeeds extends stageAction {
   constructor({ round }) {
-    super({ round });
-  }
-
-  title() {
-    return 'VegetableSeeds';
+    super({ round, title: 'VegetableSeeds' });
   }
 
   detail() {
