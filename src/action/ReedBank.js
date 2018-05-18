@@ -7,12 +7,4 @@ export class ReedBank extends collective(accumulative(ActionCard)) {
     super({ delta: 1, title: 'ReedBank' });
     Object.assign(this, { delta: 1, type: 'reed' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

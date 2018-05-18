@@ -7,12 +7,4 @@ export class TravelingPlayers extends collective(accumulative(ActionCard)) {
     super({ title: 'TravelingPlayers' });
     Object.assign(this, { delta: 1, type: 'food' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

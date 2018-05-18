@@ -7,12 +7,4 @@ export class PigMarket extends collective(accumulative(stageAction)) {
     super({ round, title: 'PigMarket' });
     Object.assign(this, { delta: 1, type: 'boar' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

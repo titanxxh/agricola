@@ -7,12 +7,4 @@ export class Fishing extends collective(accumulative(ActionCard)) {
     super({ title: 'Fishing' });
     Object.assign(this, { delta: 1, type: 'food' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

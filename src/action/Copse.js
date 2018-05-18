@@ -7,12 +7,4 @@ export class Copse extends collective(accumulative(ActionCard)) {
     super({ title: 'Copse' });
     Object.assign(this, { delta: 1, type: 'wood' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

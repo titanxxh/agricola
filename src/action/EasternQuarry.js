@@ -7,12 +7,4 @@ export class EasternQuarry extends collective(accumulative(stageAction)) {
     super({ round, title: 'EasternQuarry' });
     Object.assign(this, { delta: 1, type: 'stone' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

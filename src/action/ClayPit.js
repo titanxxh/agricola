@@ -7,12 +7,4 @@ export class ClayPit extends collective(accumulative(ActionCard)) {
     super({ title: 'ClayPit' });
     Object.assign(this, { delta: 1, type: 'clay' });
   }
-
-  detail() {
-    return `${this.delta} ${this.type} >`;
-  }
-
-  show() {
-    return `${this.acc} ${this.type}`;
-  }
 }

@@ -21,4 +21,12 @@ export const accumulative = Sup =>
     clearResourceOfPlayer(G, id) {
       this.acc = 0;
     }
+
+    detail() {
+      return `${this.delta} ${this.type} >`;
+    }
+
+    show() {
+      return `${this.acc} ${this.type}`;
+    }
   };
