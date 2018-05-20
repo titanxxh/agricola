@@ -7,6 +7,8 @@ export class stageAction extends ActionCard {
   }
 
   visible(G) {
-    return this.round <= G.currentRound;
+    // todo for test we open all actions
+    return true;
+    //return this.round <= G.currentRound;
   }
 }

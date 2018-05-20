@@ -35,17 +35,17 @@ export class PlayerBoard extends React.Component {
     const pId = this.props.G.sittingOrder[this.props.turnOrderId];
 
     let tbody = [];
-    for (let i = 0; i < playerBoardHeight; i++) {
+    for (let j = 0; j < playerBoardHeight; j++) {
       let cells = [];
-      for (let j = 0; j < playerBoardLength; j++) {
-        const index = playerBoardLength * i + j;
+      for (let i = 0; i < playerBoardLength; i++) {
+        const index = playerBoardLength * j + i;
         cells.push(
           <td key={index} className={'player ' + indexToType(index)} onClick={() => this.onClick(index)}>
             {/*{indexToType(index)}*/}
           </td>
         );
       }
-      tbody.push(<tr key={i}>{cells}</tr>);
+      tbody.push(<tr key={j}>{cells}</tr>);
     }
 
     return (

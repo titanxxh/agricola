@@ -40,6 +40,7 @@ export const setting = {
     });
 
     r.playersInfo = Array.from({ length: ctx.numPlayers }, (v, i) => initPlayer(i));
+    // todo for test we fix sitting order
     r.sittingOrder = Array.from({ length: ctx.numPlayers }, (v, i) => i);
     //r.sittingOrder = cs.shuffleArray(Array.from({ length: ctx.numPlayers }, (v, i) => i), rand);
 

@@ -1,4 +1,5 @@
 import { stageAction } from './stageAction';
+import { wishForChild } from './atoms/wishForChild';
 
 export class BasicWishForChildren extends stageAction {
   constructor({ round }) {
@@ -13,12 +14,14 @@ export class BasicWishForChildren extends stageAction {
     return '';
   }
 
+  preCheck(G, id) {
+    const wish = wishForChild({});
+    return wish.preCheck(G, id, this);
+  }
+
   executeByPlayer(G, id) {
     super.executeByPlayer(G, id);
-    let p = G.playersInfo[id].public;
-    p.farm.newborn += 1;
-    p.farm.members += 1;
-    p.farm.workingMembers.push(this.title());
-    this.occupied.push(id);
+    const wish = wishForChild({});
+    wish.executeByPlayerOnAction(G, id, this);
   }
 }

@@ -1,4 +1,5 @@
 import * as cs from './constants';
+import { farmBoard } from './farmBoard';
 
 export class playerPublic {
   constructor({ farm, resources, improvements, occupations }) {
@@ -43,6 +44,7 @@ export function initPlayer(id, startingFood = 3) {
         stables: [],
         totalFences: 15,
         fences: [],
+        board: new farmBoard(),
       },
       resources: {
         food: startingFood,
