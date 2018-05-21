@@ -58,12 +58,12 @@ export function initPlayer(id, startingFood = 3) {
         boar: 0,
         cattle: 0,
       },
-      improvements: [],
-      occupations: [],
+      improvements: new Map(),
+      occupations: new Map(),
     }),
     playerSecret: new playerSecret({
-      minors: [],
-      occupations: [],
+      minors: new Map(),
+      occupations: new Map(),
     }),
   });
 }

@@ -1,5 +1,6 @@
 import { stageAction } from './stageAction';
 import { wishForChild } from './atoms/wishForChild';
+import { playMinor } from './atoms/playMinor';
 
 export class BasicWishForChildren extends stageAction {
   constructor({ round }) {
@@ -23,5 +24,11 @@ export class BasicWishForChildren extends stageAction {
     super.executeByPlayer(G, id);
     const wish = wishForChild({});
     wish.executeByPlayerOnAction(G, id, this);
+    const playMinor = playMinor({});
+    if (playMinor.preCheck(G, id, this)) {
+      // todo set G to waiting playMinor State
+    } else {
+      // todo set G to waiting confirm end turn State
+    }
   }
 }
