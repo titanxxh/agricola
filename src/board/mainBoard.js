@@ -56,6 +56,25 @@ export class MainBoard extends React.Component {
     const currentPlayerId = +this.props.ctx.currentPlayer;
     console.log(`client ${clientId} current ${currentPlayerId} ${clientId === currentPlayerId}`);
 
+    const occGradient = occList => {
+      const l = occList.length;
+      if (l === 0) {
+        return 'white';
+      }
+      const per = Math.floor(100 / l);
+      let grad = 'linear-gradient(to right, ';
+      for (let i = 0; i < l; i++) {
+        const v = occList[i];
+        if (i < l - 1) {
+          grad += `${cs.playerColor[v]} ${per * i}%, ${cs.playerColor[v]} ${per * (i + 1)}%, `;
+        } else {
+          grad += `${cs.playerColor[v]} ${per * i}%, ${cs.playerColor[v]} 100%)`;
+        }
+      }
+      console.log(grad);
+      return grad;
+    };
+
     let tbody = [];
     if (this.props.G.currentRound > 0) {
       let i = 0;
@@ -68,32 +87,42 @@ export class MainBoard extends React.Component {
         const action = this.props.G.mainActions.get(title);
         const tooltipId = 'Tooltip-Action-' + index;
         let td = null;
-        if (action !== undefined) {
-          //console.log(action, 'on', i);
-          const round = action.round;
-          if (round === undefined) {
-            td = (
-              <td
-                key={index}
-                className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
-                onClick={() => this.onClickMainAction(index)}
-              >
+        const actionStyle = {
+          width: '100%',
+        };
+        const occupiedStyle = {
+          width: '100%',
+          height: '20px',
+          background: `${occGradient(action.occupiedBy())}`,
+        };
+        const round = action.round;
+        if (round === undefined) {
+          td = (
+            <td
+              key={index}
+              className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
+              onClick={() => this.onClickMainAction(index)}
+            >
+              <div style={actionStyle}>
                 <p id={tooltipId}>{action.title()}</p>
                 <p>{action.show()}</p>
                 <UncontrolledTooltip placement="right" target={tooltipId}>
                   <p>{`(${action.detail()})`}</p>
                   <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
                 </UncontrolledTooltip>
-              </td>
-            );
-          } else {
-            if (action.visible(this.props.G)) {
-              td = (
-                <td
-                  key={index}
-                  className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
-                  onClick={() => this.onClickMainAction(index)}
-                >
+              </div>
+              <div style={occupiedStyle} />
+            </td>
+          );
+        } else {
+          if (action.visible(this.props.G)) {
+            td = (
+              <td
+                key={index}
+                className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
+                onClick={() => this.onClickMainAction(index)}
+              >
+                <div style={actionStyle}>
                   <p id={tooltipId}>{action.title()}</p>
                   <p>{action.show()}</p>
                   <UncontrolledTooltip placement="right" target={tooltipId}>
@@ -101,15 +130,16 @@ export class MainBoard extends React.Component {
                     <p>{`(${action.detail()})`}</p>
                     <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
                   </UncontrolledTooltip>
-                </td>
-              );
-            } else {
-              td = (
-                <td key={index} className={`action`}>
-                  <p>{`Round${round}`}</p>
-                </td>
-              );
-            }
+                </div>
+                <div style={occupiedStyle} />
+              </td>
+            );
+          } else {
+            td = (
+              <td key={index} className={`action`}>
+                <p>{`Round${round}`}</p>
+              </td>
+            );
           }
         }
         cells.push(td);

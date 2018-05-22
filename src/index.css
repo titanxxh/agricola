@@ -41,22 +41,6 @@ td.action {
   height: 50px;
 }
 
-td.red {
-  background: red;
-}
-
-td.yellow {
-  background: yellow;
-}
-
-td.purple {
-  background: purple;
-}
-
-td.blue {
-  background: blue;
-}
-
 td.active {
   cursor: pointer;
 }
