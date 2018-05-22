@@ -1,7 +1,7 @@
 import React from 'react';
 import { PlayerBoard } from './playerBoard';
 import * as cs from '../constants';
-import { ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup, Button, UncontrolledTooltip } from 'reactstrap';
 
 export class MainBoard extends React.Component {
   onClickMainAction(i) {
@@ -66,6 +66,7 @@ export class MainBoard extends React.Component {
         const index = i;
         const title = this.props.G.actionCells[index];
         const action = this.props.G.mainActions.get(title);
+        const tooltipId = 'Tooltip-Action-' + index;
         let td = null;
         if (action !== undefined) {
           //console.log(action, 'on', i);
@@ -77,10 +78,12 @@ export class MainBoard extends React.Component {
                 className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
                 onClick={() => this.onClickMainAction(index)}
               >
-                <p>{action.title()}</p>
-                <p>{`(${action.detail()})`}</p>
+                <p id={tooltipId}>{action.title()}</p>
                 <p>{action.show()}</p>
-                <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+                <UncontrolledTooltip placement="right" target={tooltipId}>
+                  <p>{`(${action.detail()})`}</p>
+                  <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+                </UncontrolledTooltip>
               </td>
             );
           } else {
@@ -91,11 +94,13 @@ export class MainBoard extends React.Component {
                   className={`action ${action.canChooseByPlayer(currentPlayerId) ? 'active' : ''}`}
                   onClick={() => this.onClickMainAction(index)}
                 >
-                  <p>{`Round${round}`}</p>
-                  <p>{action.title()}</p>
-                  <p>{`(${action.detail()})`}</p>
+                  <p id={tooltipId}>{action.title()}</p>
                   <p>{action.show()}</p>
-                  <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+                  <UncontrolledTooltip placement="right" target={tooltipId}>
+                    <p>{`Round${round}`}</p>
+                    <p>{`(${action.detail()})`}</p>
+                    <p>{action.occupiedBy().reduce((acc, x) => acc + cs.playerColor[x], '')}</p>
+                  </UncontrolledTooltip>
                 </td>
               );
             } else {
