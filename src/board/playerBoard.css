@@ -1,35 +1,36 @@
-td.player {
-  border: 1px solid #aaa;
+div.playerBoard {
+  width: 500px;
+  height: 310px;
 }
 
-/* todo the table will not accept different width!!! */
-td.none {
-  table-layout: fixed;
-  width: 5px;
-  height: 5px;
+div.farmBoard {
+  border: 1px solid #aaa;
+  float: left;
+}
+
+div.none {
+  width: 5%;
+  height: 8%;
   background: #eee;
 }
 
-td.fenceV {
-  table-layout: fixed;
-  width: 5px;
-  height: 50px;
+div.fenceV {
+  width: 5%;
+  height: 22.5%;
   cursor: pointer;
   background: white;
 }
 
-td.fenceH {
-  table-layout: fixed;
-  width: 50px;
-  height: 5px;
+div.fenceH {
+  width: 14%;
+  height: 8%;
   cursor: pointer;
   background: white;
 }
 
-td.farm {
-  table-layout: fixed;
-  width: 50px;
-  height: 50px;
+div.farm {
+  width: 14%;
+  height: 22.5%;
   cursor: pointer;
   background: green;
 }

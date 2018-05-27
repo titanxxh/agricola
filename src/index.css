@@ -37,8 +37,8 @@ td {
 }
 
 td.action {
-  width: 50px;
-  height: 50px;
+  width: auto;
+  height: auto;
 }
 
 td.active {

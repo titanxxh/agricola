@@ -18,11 +18,11 @@ const indexToType = function(index) {
   if (pos.x % 2 === 0 && pos.y % 2 === 0) {
     return 'none';
   } else if (pos.x % 2 === 1 && pos.y % 2 === 0) {
-    return 'fenceH';
+    return 'fenceV';
   } else if (pos.x % 2 === 1 && pos.y % 2 === 1) {
     return 'farm';
   } else {
-    return 'fenceV';
+    return 'fenceH';
   }
 };
 
@@ -33,19 +33,28 @@ export class PlayerBoard extends React.Component {
 
   render() {
     const pId = this.props.G.sittingOrder[this.props.turnOrderId];
+    const player = this.props.G.playersInfo[pId];
+    const farmBoard = player.public.farm.board;
 
-    let tbody = [];
-    for (let j = 0; j < playerBoardHeight; j++) {
-      let cells = [];
-      for (let i = 0; i < playerBoardLength; i++) {
-        const index = playerBoardLength * j + i;
-        cells.push(
-          <td key={index} className={'player ' + indexToType(index)} onClick={() => this.onClick(index)}>
-            {/*{indexToType(index)}*/}
-          </td>
-        );
+    let cells = [];
+    if (this.props.G.currentRound > 0) {
+      for (let j = 0; j < playerBoardHeight; j++) {
+        for (let i = 0; i < playerBoardLength; i++) {
+          const index = playerBoardLength * j + i;
+          const type = indexToType(index);
+          let show = '';
+          if (type === 'fenceV' || type === 'fenceH') {
+            show = farmBoard.hasFence(i, j) ? 'F' : '';
+          } else if (type === 'farm') {
+            show = farmBoard.getLand(Math.floor(i / 2), Math.floor(j / 2)).grid;
+          }
+          cells.push(
+            <div key={index} className={'farmBoard ' + type} onClick={() => this.onClick(index)}>
+              {show}
+            </div>
+          );
+        }
       }
-      tbody.push(<tr key={j}>{cells}</tr>);
     }
 
     return (
@@ -53,11 +62,7 @@ export class PlayerBoard extends React.Component {
         <div>
           Player {cs.playerColor[pId]} Board, {this.props.G.startingPlayerToken === pId ? 'Starter Player' : ''}
         </div>
-        <div>
-          <table id="playerBoard">
-            <tbody>{tbody}</tbody>
-          </table>
-        </div>
+        <div className="playerBoard">{cells}</div>
         <ResourcesBoard player={this.props.G.playersInfo[pId]} />
       </div>
     );

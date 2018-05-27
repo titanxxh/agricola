@@ -6,5 +6,5 @@ test('init player', () => {
   expect(player.public.resources.boar).toBe(0);
   expect(player.public.farm.stables.length).toBe(0);
   expect(player.public.farm.workingMembers.length).toBe(0);
-  expect(player.secret.minors.length).toBe(0);
+  expect(player.secret.minors.size).toBe(0);
 });

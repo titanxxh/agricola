@@ -24,8 +24,8 @@ export class BasicWishForChildren extends stageAction {
     super.executeByPlayer(G, id);
     const wish = wishForChild({});
     wish.executeByPlayerOnAction(G, id, this);
-    const playMinor = playMinor({});
-    if (playMinor.preCheck(G, id, this)) {
+    const pm = playMinor({});
+    if (pm.preCheck(G, id, this)) {
       // todo set G to waiting playMinor State
     } else {
       // todo set G to waiting confirm end turn State
