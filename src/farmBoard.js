@@ -33,10 +33,8 @@ const floodFill = function(land, fence, pos) {
   let head = 0;
   let tail = 1;
   let outOfLand = false;
-  while (head < tail) {
-    const s = filled[head];
-    head++;
-    delta.forEach(v => {
+  const applyDelta = function(s) {
+    return v => {
       const neigh = { x: s.x + v.x, y: s.y + v.y };
       const neighIndex = accorToIndex(neigh, landSize);
       if (!isSeparated(s, neigh, fence)) {
@@ -50,7 +48,12 @@ const floodFill = function(land, fence, pos) {
           outOfLand = true;
         }
       }
-    });
+    };
+  };
+  while (head < tail) {
+    const s = filled[head];
+    head++;
+    delta.forEach(applyDelta(s));
   }
   return { filled, outOfLand };
 };

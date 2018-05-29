@@ -71,7 +71,6 @@ export class MainBoard extends React.Component {
           grad += `${cs.playerColor[v]} ${per * i}%, ${cs.playerColor[v]} 100%)`;
         }
       }
-      console.log(grad);
       return grad;
     };
 
