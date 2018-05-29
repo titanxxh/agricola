@@ -1,4 +1,4 @@
-import { Game } from 'boardgame.io/core';
+import { Game } from 'boardgame.io/dist/core';
 import * as cs from './constants';
 import { setting } from './phase/setting';
 import { round } from './phase/round';

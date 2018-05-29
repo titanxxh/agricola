@@ -3,7 +3,7 @@ import './App.css';
 import logger from 'redux-logger';
 import { applyMiddleware, compose } from 'redux';
 
-import { Client } from 'boardgame.io/react';
+import { Client } from 'boardgame.io/dist/react';
 import { Agricola } from './game';
 import { MainBoard } from './board/mainBoard';
 
