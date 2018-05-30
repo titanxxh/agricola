@@ -2,7 +2,7 @@ import { initPlayer } from '../../player';
 import { playMinor } from './playMinor';
 
 test('play a minor from hand', () => {
-  const atom = playMinor({});
+  const atom = playMinor();
   let G = { playersInfo: [initPlayer(0)] };
   let p = G.playersInfo[0].public;
   let hands = G.playersInfo[0].secret;

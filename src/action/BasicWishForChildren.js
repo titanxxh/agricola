@@ -16,15 +16,15 @@ export class BasicWishForChildren extends stageAction {
   }
 
   preCheck(G, id) {
-    const wish = wishForChild({});
+    const wish = wishForChild();
     return wish.preCheck(G, id, this);
   }
 
   executeByPlayer(G, id) {
     super.executeByPlayer(G, id);
-    const wish = wishForChild({});
+    const wish = wishForChild();
     wish.executeByPlayerOnAction(G, id, this);
-    const pm = playMinor({});
+    const pm = playMinor();
     if (pm.preCheck(G, id, this)) {
       // todo set G to waiting playMinor State
     } else {

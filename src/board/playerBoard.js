@@ -8,8 +8,8 @@ const playerBoardLength = 11;
 
 const indexToAccor = function(index) {
   return {
-    x: Math.floor(index / playerBoardLength),
-    y: index % playerBoardLength,
+    y: Math.floor(index / playerBoardLength),
+    x: index % playerBoardLength,
   };
 };
 
@@ -18,11 +18,11 @@ const indexToType = function(index) {
   if (pos.x % 2 === 0 && pos.y % 2 === 0) {
     return 'none';
   } else if (pos.x % 2 === 1 && pos.y % 2 === 0) {
-    return 'fenceV';
+    return 'fenceH';
   } else if (pos.x % 2 === 1 && pos.y % 2 === 1) {
     return 'farm';
   } else {
-    return 'fenceH';
+    return 'fenceV';
   }
 };
 

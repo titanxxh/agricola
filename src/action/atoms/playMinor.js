@@ -1,4 +1,4 @@
-export function playMinor({}) {
+export function playMinor() {
   const preCheck = (G, id, action) => {
     let hands = G.playersInfo[id].secret;
     let canPlay = false;

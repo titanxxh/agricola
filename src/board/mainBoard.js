@@ -37,7 +37,6 @@ export class MainBoard extends React.Component {
   onClickDraftButton() {
     if (!this.isActive()) return;
     console.log('draft');
-    console.log(this.props);
     this.props.moves.draft();
     this.props.events.endTurn();
   }
