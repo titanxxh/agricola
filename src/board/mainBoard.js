@@ -10,8 +10,7 @@ export class MainBoard extends React.Component {
     const action = this.props.G.mainActions.get(title);
     console.log('onclick', i, title, action);
     if (action.canChooseByPlayer(this.props.ctx.currentPlayer)) {
-      this.props.moves.clickCell(title);
-      this.props.events.endTurn();
+      this.props.moves.doMainAction(title);
     }
   }
 
@@ -30,15 +29,13 @@ export class MainBoard extends React.Component {
   onClickConfirmButton() {
     if (!this.isActive()) return;
     console.log('confirm');
-    // todo not end turn
-    this.props.events.endTurn();
+    this.props.moves.confirmMoves();
   }
 
   onClickDraftButton() {
     if (!this.isActive()) return;
     console.log('draft');
     this.props.moves.draft();
-    this.props.events.endTurn();
   }
 
   onClickResetButton() {

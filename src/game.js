@@ -14,6 +14,9 @@ export const Agricola = Game({
       },
       mainActions: new Map(),
       actionCells: [],
+      doCurrentPlayerConfirmed: (G, ctx) => {
+        return G.playersInfo[ctx.currentPlayer].movesConfirmed;
+      },
     };
     cs.mainActionTitle.forEach((title, i) => {
       if (title.indexOf('Round') === 0) {
@@ -26,7 +29,14 @@ export const Agricola = Game({
   },
 
   moves: {
-    clickCell(G, ctx, title) {
+    confirmMoves(G, ctx) {
+      let r = { ...G };
+      let p = r.playersInfo[ctx.currentPlayer];
+      p.movesConfirmed = true;
+      return r;
+    },
+
+    doMainAction(G, ctx, title) {
       let r = { ...G };
       let action = r.mainActions.get(title);
       if (!action.canChooseByPlayer(ctx.currentPlayer)) {

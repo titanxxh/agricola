@@ -34,6 +34,7 @@ export function initPlayer(id, startingFood = 3) {
     id: id,
     color: cs.playerColor[id],
     draftDone: false,
+    movesConfirmed: false,
     playerPublic: new playerPublic({
       farm: {
         members: 2,

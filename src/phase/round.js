@@ -6,6 +6,8 @@ export function round(i) {
   return {
     name: 'Round' + i,
 
+    allowedMoves: (G, ctx) => ['confirmMoves', 'doMainAction'],
+
     turnOrder: {
       first: (G, ctx) => {
         log('first player is ' + G.startingPlayerToken);
@@ -19,9 +21,21 @@ export function round(i) {
       },
     },
 
+    onTurnBegin: (G, ctx) => {
+      log(`player ${ctx.currentPlayer} turn begin`);
+      let r = { ...G };
+      let p = r.playersInfo[ctx.currentPlayer];
+      p.movesConfirmed = false;
+      return r;
+    },
+
     onTurnEnd: (G, ctx) => {
       log(`player ${ctx.currentPlayer} turn end`);
       return G;
+    },
+
+    endTurnIf: (G, ctx) => {
+      return G.doCurrentPlayerConfirmed(G, ctx);
     },
 
     // Run at the beginning of a phase.
@@ -34,13 +48,15 @@ export function round(i) {
         v.onTurnBegin();
       });
       r.playersInfo.forEach((v, i) => {
+        v.movesConfirmed = false;
         v.public.farm.newborn = 0;
       });
       return r;
     },
 
     endPhaseIf: (G, ctx) => {
-      const allPlayersMemberUsed = G.playersInfo.reduce((acc, x) => acc && !x.hasAvailableMembers(), true);
+      const allPlayersMemberUsed =
+        G.playersInfo.reduce((acc, x) => acc && !x.hasAvailableMembers(), true) && G.doCurrentPlayerConfirmed(G, ctx);
       if (allPlayersMemberUsed) {
         log('allPlayersMemberUsed');
         log(`next round starting player ${G.nextStartingPlayerToken}`);
