@@ -18,14 +18,16 @@ export class Lessons1 extends ActionCard {
     const po = playOccupation();
     let p = G.playersInfo[id].public;
     if (p.occupations.size === 0) {
-      return wish.executeByPlayerOnAction(G, id, this);
+      return po.preCheck(G, id, this);
     } else {
-      return p.resources.food > 1 && wish.executeByPlayerOnAction(G, id, this);
+      return p.resources.food >= 1 && po.preCheck(G, id, this);
     }
   }
 
   executeByPlayer(G, id) {
     super.executeByPlayer(G, id);
+    let p = G.playersInfo[id].public;
+    p.resources.food -= 1;
     const po = playOccupation();
     // todo set G to waiting playOccupation State
   }

@@ -11,11 +11,8 @@ export function playMinor() {
   };
 
   const executeByPlayerOnAction = (G, id, action, minor) => {
-    let p = G.playersInfo[id].public;
-    let hands = G.playersInfo[id].secret;
-    // todo maybe more hooks here
-    hands.minors.delete(minor.name);
-    p.improvements.set(minor.name, minor);
+    let p = G.playersInfo[id];
+    p.playMinor(minor);
   };
 
   return {

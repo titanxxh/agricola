@@ -11,11 +11,8 @@ export function playOccupation() {
   };
 
   const executeByPlayerOnAction = (G, id, action, occupation) => {
-    let p = G.playersInfo[id].public;
-    let hands = G.playersInfo[id].secret;
-    // todo maybe more hooks here
-    hands.occupations.delete(occupation.name);
-    p.occupations.set(occupation.name, occupation);
+    let p = G.playersInfo[id];
+    p.playOccupation(occupation);
   };
 
   return {
