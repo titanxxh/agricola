@@ -8,11 +8,11 @@ export class BasicWishForChildren extends stageAction {
   }
 
   detail() {
-    return '';
+    return 'born (must have room) then play a minor';
   }
 
   show() {
-    return '';
+    return 'born then play a minor';
   }
 
   preCheck(G, id) {
