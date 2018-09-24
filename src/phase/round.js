@@ -9,13 +9,19 @@ export function round(i) {
     turnOrder: {
       first: (G, ctx) => {
         log('first player is ' + G.startingPlayerToken);
-        return G.startingPlayerToken;
+        return {
+          playerOrderPos: G.startingPlayerToken,
+          actionPlayers: [G.startingPlayerToken],
+        };
       },
       next: (G, ctx) => {
         const pos = G.sittingOrder.indexOf(+ctx.currentPlayer);
         const next = G.sittingOrder[(pos + 1) % ctx.numPlayers];
         log('next player is ' + next);
-        return next;
+        return {
+          playerOrderPos: (pos + 1) % ctx.numPlayers,
+          actionPlayers: [next],
+        };
       },
     },
 

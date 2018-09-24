@@ -14,6 +14,8 @@ export const Agricola = Game({
       },
       mainActions: new Map(),
       actionCells: [],
+      startingPlayerToken: 0,
+      nextStartingPlayerToken: 0,
     };
     cs.mainActionTitle.forEach((title, i) => {
       if (title.indexOf('Round') === 0) {

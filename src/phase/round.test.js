@@ -10,11 +10,17 @@ test('round robin turn order', () => {
     startingPlayerToken: 1,
   };
   const round1 = round(1);
-  expect(round1.turnOrder.first(G, {})).toBe(1);
+  expect(round1.turnOrder.first(G, {})).toBe({
+    playerOrderPos: 1,
+    actionPlayers: ['1'],
+  });
   expect(
     round1.turnOrder.next(G, {
       currentPlayer: '1',
       numPlayers: numPlayers,
     })
-  ).toBe(2);
+  ).toBe({
+    playerOrderPos: 2,
+    actionPlayers: ['2'],
+  });
 });

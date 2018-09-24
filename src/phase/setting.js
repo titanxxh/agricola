@@ -11,12 +11,23 @@ export const setting = {
   allowedMoves: (G, ctx) => ['draft'],
 
   turnOrder: {
-    first: (G, ctx) => G.startingPlayerToken,
+    first: (G, ctx) => {
+      let o = {
+        playerOrderPos: G.startingPlayerToken,
+        actionPlayers: [G.startingPlayerToken],
+      };
+      log(G);
+      log(o);
+      return o;
+    },
     next: (G, ctx) => {
       const pos = G.sittingOrder.indexOf(+ctx.currentPlayer);
       const next = G.sittingOrder[(pos + 1) % ctx.numPlayers];
       log('next player is ' + next);
-      return next;
+      return {
+        playerOrderPos: (pos + 1) % ctx.numPlayers,
+        actionPlayers: [next],
+      };
     },
   },
 
@@ -47,6 +58,7 @@ export const setting = {
     r.startingPlayerToken = r.sittingOrder[0];
     r.nextStartingPlayerToken = r.startingPlayerToken;
     r.playersInfo[r.startingPlayerToken].public.resources.food = 2;
+    log(r);
     return r;
   },
 

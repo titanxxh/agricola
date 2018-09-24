@@ -14,8 +14,8 @@ const AgricolaClient = Client({
   // multiplayer: { server: 'localhost:8000' },
   //debug: false,
   enhancer: compose(
-    applyMiddleware(logger),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(logger)
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   ),
 });
 
