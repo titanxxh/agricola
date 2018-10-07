@@ -1,9 +1,8 @@
-import { Game } from 'boardgame.io/dist/core';
 import * as cs from './constants';
 import { setting } from './phase/setting';
 import { round } from './phase/round';
 
-export const Agricola = Game({
+export const Agricola = {
   setup: () => {
     let g = {
       currentRound: 0,
@@ -75,4 +74,4 @@ export const Agricola = Game({
 
     return r;
   },
-});
+};

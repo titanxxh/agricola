@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.js"],"names":["console","log","Agricola"],"mappings":";;AAAA;;AAEAA,QAAQC,GAAR,CAAYC,cAAZ","file":"index.js","sourcesContent":["import { Agricola } from './game';\n\nconsole.log(Agricola);"]}
