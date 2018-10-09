@@ -8,7 +8,7 @@ const log = function(x) {
 export const setting = {
   name: 'Setting',
 
-  allowedMoves: (G, ctx) => ['draft'],
+  allowedMoves: (G, ctx) => ['confirmMoves', 'draft'],
 
   turnOrder: {
     first: (G, ctx) => G.startingPlayerToken,
@@ -20,9 +20,21 @@ export const setting = {
     },
   },
 
+  onTurnBegin: (G, ctx) => {
+    log(`player ${ctx.currentPlayer} turn begin`);
+    let r = { ...G };
+    let p = r.playersInfo[ctx.currentPlayer];
+    p.movesConfirmed = false;
+    return r;
+  },
+
   onTurnEnd: (G, ctx) => {
     log(`player ${ctx.currentPlayer} turn end`);
     return G;
+  },
+
+  endTurnIf: (G, ctx) => {
+    return G.doCurrentPlayerConfirmed(G, ctx);
   },
 
   // Run at the beginning of a phase.

@@ -1,8 +1,8 @@
-export function playMinor() {
+export function playOccupation() {
   const preCheck = (G, id, action) => {
     let hands = G.playersInfo[id].secret;
     let canPlay = false;
-    hands.minors.forEach((v, k) => {
+    hands.occupations.forEach((v, k) => {
       if (v.requirement(G, id)) {
         canPlay = true;
       }
@@ -10,9 +10,9 @@ export function playMinor() {
     return canPlay;
   };
 
-  const executeByPlayerOnAction = (G, id, action, minor) => {
+  const executeByPlayerOnAction = (G, id, action, occupation) => {
     let p = G.playersInfo[id];
-    p.playMinor(minor);
+    p.playOccupation(occupation);
   };
 
   return {

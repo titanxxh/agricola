@@ -18,10 +18,8 @@ This project is still working in progress! (far away from releasing...)
 
 ##  Roadmap
 1.  basic rules for 4-player game
-1.  React Native for moblie client?
 1.  manually operation to voilate basic rules to use card effects(Like TTS)
 1.  some cards in A deck
 1.  statistics for analysis
 1.  all cards in A deck
-1.  game lobby? maybe boardgame.io will do this
 1.  more decks

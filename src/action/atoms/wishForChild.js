@@ -1,4 +1,4 @@
-export function wishForChild({}) {
+export function wishForChild() {
   const preCheck = (G, id, action) => {
     if (action.name === 'UrgentWishForChildren') {
       return true;

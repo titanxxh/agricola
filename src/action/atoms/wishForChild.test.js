@@ -2,7 +2,7 @@ import { initPlayer } from '../../player';
 import { wishForChild } from './wishForChild';
 
 test('basic wish child check', () => {
-  const wish = wishForChild({});
+  const wish = wishForChild();
   let G = { playersInfo: [initPlayer(0)] };
   let a = class BasicWishForChildren {};
   expect(wish.preCheck(G, 0, a)).toBe(false);
@@ -12,7 +12,7 @@ test('basic wish child check', () => {
 });
 
 test('urgent wish child check', () => {
-  const wish = wishForChild({});
+  const wish = wishForChild();
   let G = { playersInfo: [initPlayer(0)] };
   let a = class UrgentWishForChildren {};
   expect(wish.preCheck(G, 0, a)).toBe(true);

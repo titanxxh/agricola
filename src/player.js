@@ -27,6 +27,26 @@ export class player {
   hasAvailableMembers() {
     return this.public.farm.workingMembers.length < this.public.farm.members + this.public.farm.guests;
   }
+
+  playMinor(name) {
+    const minor = this.secret.minors.get(name);
+    this.public.improvements.set(name, minor);
+    this.secret.minors.delete(name);
+  }
+
+  draftMinor(minor) {
+    this.secret.minors.set(minor.name, minor);
+  }
+
+  playOccupation(name) {
+    const occ = this.secret.occupations.get(name);
+    this.public.occupations.set(name, occ);
+    this.secret.occupations.delete(name);
+  }
+
+  draftOccupation(occ) {
+    this.secret.occupations.set(occ.name, occ);
+  }
 }
 
 export function initPlayer(id, startingFood = 3) {
@@ -34,6 +54,7 @@ export function initPlayer(id, startingFood = 3) {
     id: id,
     color: cs.playerColor[id],
     draftDone: false,
+    movesConfirmed: false,
     playerPublic: new playerPublic({
       farm: {
         members: 2,
